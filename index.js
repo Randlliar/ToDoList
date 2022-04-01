@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initApp() {
   getFromLocalStorage();
-}
+};
 
 btn.addEventListener('click', () => {
   if (!input.value) {
     return;
-  }
+  };
 
   const newItem = {
     id: Date.now(),
@@ -89,7 +89,7 @@ function changeTaskStatus(id) {
 
   if (todoItemIndex < 0) {
     return;
-  }
+  };
 
   const todoItem = todoItems[todoItemIndex];
   todoItem.isCompleted = !todoItem.isCompleted;
@@ -101,23 +101,23 @@ function changeTaskStatus(id) {
   } else {
     wrapper.classList.add('assigned');
     wrapper.classList.remove('completed');
-  }
+  };
   updateLocalStorage();
-}
+};
 
 function updateLocalStorage() {
   localStorage.setItem('todos', JSON.stringify(todoItems));
-}
+};
 
 function getFromLocalStorage() {
   let savedTodoItems = localStorage.getItem('todos');
   if (savedTodoItems) {
     todoItems = JSON.parse(savedTodoItems);
-  }
+  };
 
   todoItems.forEach((item) => {
     item.date = new Date(item.date);
     drawItem(item);
   });
-}
+};
 
