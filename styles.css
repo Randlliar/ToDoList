@@ -1,92 +1,93 @@
 body,
 html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-.inputGroup{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 600px;
-    margin: 60px auto;
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin: 60px auto;
 }
 
 .todo__form {
-    display: flex;
-    flex-direction: row;    margin: 10px;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
 
 }
 
 .todo__input {
-    /*width: auto;*/
-    flex: 6;
-    height: 30px;
-    border-radius: 3px;
+  /*width: auto;*/
+  flex: 6;
+  height: 30px;
+  border-radius: 3px;
 }
 
 .todo__add-button {
-    color: #75c1ff;
-    border: 1px solid #75c1ff;
-    border-radius: 3px;
+  color: #75c1ff;
+  border: 1px solid #75c1ff;
+  border-radius: 3px;
 }
 
 .todo__add-button:hover {
-    color: white;
-    background: #75c1ff;
+  color: white;
+  background: #75c1ff;
 }
 
-.todo__item{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    border: 2px dotted;
-    margin-bottom: 5px;
+.todo__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border: 2px dotted;
+  margin-bottom: 5px;
 }
 
-.li.todo__item{
-    list-style-type: decimal;
+.li.todo__item {
+  list-style-type: decimal;
 }
 
-.completed{
-    text-decoration: line-through;
-    margin: 10px;
+.completed {
+  text-decoration: line-through;
+  margin: 10px;
 }
 
 .btn__red {
-    flex: 1;
-    color: #ff3333;
-    border: 1px solid #ff3333;
-    margin: 10px;
-    height: 30px;
+  flex: 1;
+  color: #ff3333;
+  border: 1px solid #ff3333;
+  margin: 10px;
+  height: 30px;
 }
 
 .btn__red:hover {
-    color: white;
-    background: #ff3333;
+  color: white;
+  background: #ff3333;
 }
 
-.check__box{
-    width: 30px;
-    height: 30px;
-    flex: 1;
-
-}
-
-.todo__span{
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-    flex: 1;
+.check__box {
+  width: 30px;
+  height: 30px;
+  flex: 1;
 
 }
 
-.todo__text{
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-    flex: 1;
-    border: black 1px;
+.todo__span {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  flex: 1;
+
+}
+
+.todo__text {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  flex: 1;
+  border: black 1px;
 }
