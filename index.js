@@ -3,19 +3,28 @@ const btn = document.getElementById('btn');
 const result = document.getElementById('result');
 
 let todoItems = [];
+let li;
+let span;
+let checkbox;
+let text;
+let buttonDelete;
+let findElement;
+let todoItemIndex;
+let todoItem;
+let wrapper;
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   initApp();
 });
 
-function initApp() {
+const initApp = () => {
   getFromLocalStorage();
 };
 
 btn.addEventListener('click', () => {
   if (!input.value) {
     return;
-  };
+  }
 
   const newItem = {
     id: Date.now(),
@@ -30,26 +39,26 @@ btn.addEventListener('click', () => {
   drawItem(newItem);
 });
 
-function drawItem(newItem) {
-  const li = document.createElement('li');
+const drawItem = (newItem) => {
+  li = document.createElement('li');
   li.classList.add('todo__item');
   li.setAttribute('id', `todo_${newItem.id}__wrapper`);
   li.classList.add('assigned');
 
-  const span = document.createElement('span');
+  span = document.createElement('span');
   span.classList.add('todo__span');
-  span.innerText = `${newItem.date.getDate()}-${newItem.date.getMonth()+1}-${newItem.date.getFullYear()}`;
+  span.innerText = `${newItem.date.getDate()}-${newItem.date.getMonth() + 1}-${newItem.date.getFullYear()}`;
 
-  const checkbox = document.createElement('input');
+  checkbox = document.createElement('input');
   checkbox.classList.add('check__box');
   checkbox.setAttribute('type', 'checkbox')
-  if (newItem.isCompleted){
+  if (newItem.isCompleted) {
     checkbox.setAttribute('checked', newItem.isCompleted);
   }
   checkbox.addEventListener('click', () => changeTaskStatus(newItem.id));
   console.log(newItem.isCompleted);
 
-  const text = document.createElement('span');
+  text = document.createElement('span');
   text.classList.add('todo__text');
   text.innerText = newItem.value;
   if (newItem.isCompleted) {
@@ -61,7 +70,7 @@ function drawItem(newItem) {
   }
   text.setAttribute('id', `todo_${newItem.id}__text`);
 
-  const buttonDelete = document.createElement('input');
+  buttonDelete = document.createElement('input');
   buttonDelete.classList.add('btn', 'btn__red');
   buttonDelete.setAttribute('value', 'delete');
   buttonDelete.setAttribute('type', 'submit');
@@ -77,23 +86,23 @@ function drawItem(newItem) {
   result.append(li);
 }
 
-function deleteItem(id) {
-  const findElement = document.getElementById(`todo_${id}__wrapper`);
+const deleteItem = (id) => {
+  findElement = document.getElementById(`todo_${id}__wrapper`);
   findElement.remove();
   todoItems = todoItems.filter((item) => item.id !== id);
   updateLocalStorage();
 }
 
-function changeTaskStatus(id) {
-  const todoItemIndex = todoItems.findIndex((todoItem) => todoItem.id === id);
+const changeTaskStatus = (id) => {
+  todoItemIndex = todoItems.findIndex((todoItem) => todoItem.id === id);
 
   if (todoItemIndex < 0) {
     return;
-  };
+  }
 
-  const todoItem = todoItems[todoItemIndex];
+  todoItem = todoItems[todoItemIndex];
   todoItem.isCompleted = !todoItem.isCompleted;
-  const wrapper = document.getElementById(`todo_${todoItem.id}__text`);
+  wrapper = document.getElementById(`todo_${todoItem.id}__text`);
 
   if (todoItem.isCompleted) {
     wrapper.classList.add('completed');
@@ -101,19 +110,20 @@ function changeTaskStatus(id) {
   } else {
     wrapper.classList.add('assigned');
     wrapper.classList.remove('completed');
-  };
+  }
+
   updateLocalStorage();
 };
 
-function updateLocalStorage() {
+const updateLocalStorage = () => {
   localStorage.setItem('todos', JSON.stringify(todoItems));
 };
 
-function getFromLocalStorage() {
+const getFromLocalStorage = () => {
   let savedTodoItems = localStorage.getItem('todos');
   if (savedTodoItems) {
     todoItems = JSON.parse(savedTodoItems);
-  };
+  }
 
   todoItems.forEach((item) => {
     item.date = new Date(item.date);
