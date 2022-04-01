@@ -102,14 +102,14 @@ function drawItem(newItem) {
   li.append(buttonDelete);
 
   result.append(li);
-};
+}
 
 function deleteItem(id) {
   const findElement = document.getElementById(`todo_${id}__wrapper`);
   findElement.remove();
   todoItems = todoItems.filter((item) => item.id !== id);
   updateLocalStorage();
-};
+}
 
 function changeTaskStatus(id) {
   const todoItemIndex = todoItems.findIndex((todoItem) => todoItem.id === id);
@@ -131,21 +131,21 @@ function changeTaskStatus(id) {
     wrapper.classList.remove('completed');
   }
   updateLocalStorage();
-};
+}
 
 function updateLocalStorage() {
   localStorage.setItem('todos', JSON.stringify(todoItems));
-};
+}
 
 function getFromLocalStorage() {
   let savedTodoItems = localStorage.getItem('todos');
   if (savedTodoItems) {
     todoItems = JSON.parse(savedTodoItems);
-  };
+  }
 
   todoItems.forEach((item) => {
     item.date = new Date(item.date);
     drawItem(item);
   });
-};
+}
 
