@@ -38,16 +38,27 @@ function drawItem(newItem) {
 
   const span = document.createElement('span');
   span.classList.add('todo__span');
-  span.innerText = `${newItem.date.getDate()}-${newItem.date.getMonth()}-${newItem.date.getFullYear()}`;
+  span.innerText = `${newItem.date.getDate()}-${newItem.date.getMonth()+1}-${newItem.date.getFullYear()}`;
 
   const checkbox = document.createElement('input');
   checkbox.classList.add('check__box');
   checkbox.setAttribute('type', 'checkbox')
+  if (newItem.isCompleted){
+    checkbox.setAttribute('checked', newItem.isCompleted);
+  }
   checkbox.addEventListener('click', () => changeTaskStatus(newItem.id));
+  console.log(newItem.isCompleted);
 
   const text = document.createElement('span');
   text.classList.add('todo__text');
   text.innerText = newItem.value;
+  if (newItem.isCompleted) {
+    text.classList.add('completed');
+    text.classList.remove('assigned');
+  } else {
+    text.classList.add('assigned');
+    text.classList.remove('completed');
+  }
   text.setAttribute('id', `todo_${newItem.id}__text`);
 
   const buttonDelete = document.createElement('input',);
@@ -82,7 +93,6 @@ function changeTaskStatus(id) {
 
   const todoItem = todoItems[todoItemIndex];
   todoItem.isCompleted = !todoItem.isCompleted;
-
   const wrapper = document.getElementById(`todo_${todoItem.id}__text`);
 
   if (todoItem.isCompleted) {
