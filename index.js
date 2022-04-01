@@ -61,7 +61,7 @@ function drawItem(newItem) {
   }
   text.setAttribute('id', `todo_${newItem.id}__text`);
 
-  const buttonDelete = document.createElement('input',);
+  const buttonDelete = document.createElement('input');
   buttonDelete.classList.add('btn', 'btn__red');
   buttonDelete.setAttribute('value', 'delete');
   buttonDelete.setAttribute('type', 'submit');
